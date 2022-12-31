@@ -1,24 +1,28 @@
-﻿<##################################################################################################
+<##################################################################################################
 #
 .SYNOPSIS
     This script will enable Sensitivity labels for Groups and Sites:
-
 .PREREQUISITES
     1. You must install the AzureADPreview PowerShell module (Install-AzureADPreview)
     2. You will also require the Exchange Online V2 module (Install-Module -Name ExchangeOnlineManagement) 
-
 .DETAILS
     FileName:    Enable-SensitivityLabelsForGroups.ps1
     Author:      Alex Fields, ITProMentor.com
+    Modified:    Bryton Wishart, AnotherCloudBlog
     Created:     November 2020
-	Updated:     April 2021
-
+	Updated:     December 2021
 .NOTES
     You will be prompted twice since you must authenticate against both Azure AD and Exchange Online
-
 #>
 ###################################################################################################
 
+
+#Remove any old modules which can cause conflict
+Uninstall-Module AzureADPreview
+Uninstall-Module azuread
+
+## Install Modules - always overwrites
+Install-Module AzureADPreview -AllowClobber
 
 ## Import the AzureADPreview module
 Import-Module AzureADPreview
